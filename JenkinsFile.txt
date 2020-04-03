@@ -30,15 +30,5 @@ pipeline {
         mail body: "${env.JOB_NAME} - Build#${env.BUILD_NUMBER} . ${currentBuild.currentResult}\n\nCheck console output at ${env.BUILD_URL} to view the results",subject:"${env.JOB_NAME} - Build#${env.BUILD_NUMBER}",to:"ravinapuranik1@gmail.com"
    }
    }
-
-   stage('Parallel Execution') {
-   steps{
-        parallel{
-        a:{bat "mvn clean"},
-        b:{bat "mvn test"},
-        c:{bat "mvn package"}
-        }
-   }
-   }
 }
 }
